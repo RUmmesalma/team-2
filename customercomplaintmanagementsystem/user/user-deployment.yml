@@ -1,0 +1,23 @@
+apiVersion: apps/v1 #version of the Kubernetes API you're using to create this object
+kind: Deployment  #What kind of object you want to create
+metadata: #deployment name, helps uniquely identify the object
+   name: userms
+
+spec:  
+  selector:
+    matchLabels:
+      app: userms
+
+
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: userms
+    spec:   #What state you desire for the object
+
+      containers:
+      - name: userms #container name
+        image: 'harshitha1705/hotel:v2' #image name
+        ports:
+        - containerPort: 9011 # demo runs on port 9011
